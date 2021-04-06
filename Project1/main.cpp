@@ -1,25 +1,29 @@
 #include <iostream>
 #include <ctime>
+#include <string>
+
 using namespace std;
 
 
 typedef struct treenode
 {
-    int field;           
-    struct treenode* left;  
-    struct treenode* right; 
+    int field;
+    struct treenode* left;
+    struct treenode* right;
 }treenode;
 
 void treeprint(treenode* tree)
 {
-    if (tree != NULL) {      
+    if (tree != NULL)
+    {      
         treeprint(tree->left);  
         cout << tree->field << " "; 
         treeprint(tree->right); 
     }
 }
 
-struct treenode* addnode(int x, treenode* tree) {
+struct treenode* addnode(int x, treenode* tree)
+{
     if (tree == NULL)     
     {
         tree = new treenode; 
@@ -27,10 +31,10 @@ struct treenode* addnode(int x, treenode* tree) {
         tree->left = NULL;
         tree->right = NULL; 
     }
-    else     
+    else
         if (x < tree->field)   
-            tree->left = addnode(x, tree->left); 
-        else  
+            tree->left = addnode(x, tree->left);
+        else
             tree->right = addnode(x, tree->right); 
     return(tree);
 }
@@ -52,7 +56,6 @@ int main()
     setlocale(LC_ALL, "Rus");
     for (int i = 0; i < 8; i++)
     {
-        cout << "¬ведите узел " << i + 1 << ": ";
         cin >> a;
         root = addnode(a, root);
     }
