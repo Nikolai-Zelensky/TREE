@@ -1,14 +1,16 @@
 #include <iostream>
+#include <ctime>
 using namespace std;
 
-struct tnode
+
+typedef struct treenode
 {
     int field;           
-    struct tnode* left;  
-    struct tnode* right; 
-};
+    struct treenode* left;  
+    struct treenode* right; 
+}treenode;
 
-void treeprint(tnode* tree)
+void treeprint(treenode* tree)
 {
     if (tree != NULL) {      
         treeprint(tree->left);  
@@ -17,10 +19,10 @@ void treeprint(tnode* tree)
     }
 }
 
-struct tnode* addnode(int x, tnode* tree) {
+struct treenode* addnode(int x, treenode* tree) {
     if (tree == NULL)     
     {
-        tree = new tnode; 
+        tree = new treenode; 
         tree->field = x;   
         tree->left = NULL;
         tree->right = NULL; 
@@ -33,7 +35,7 @@ struct tnode* addnode(int x, tnode* tree) {
     return(tree);
 }
 
-void freemem(tnode* tree)
+void freemem(treenode* tree)
 {
     if (tree != NULL)    
     {
@@ -45,11 +47,9 @@ void freemem(tnode* tree)
 
 int main()
 {
-    struct tnode* root = 0;
-    system("chcp 1251");
-    system("cls");
+    struct treenode* root = 0;
     int a;            
-    
+    setlocale(LC_ALL, "Rus");
     for (int i = 0; i < 8; i++)
     {
         cout << "¬ведите узел " << i + 1 << ": ";
